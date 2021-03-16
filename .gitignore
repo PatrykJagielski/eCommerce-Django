@@ -1,3 +1,7 @@
 venv
 .vscode
 db.sqlite3
+__pycache__/
+.coverage
+media
+*.pyc
