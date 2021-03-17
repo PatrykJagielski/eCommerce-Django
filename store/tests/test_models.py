@@ -18,14 +18,14 @@ class TestCategoriesModel(TestCase):
         self.assertTrue(isinstance(data, Category))
         self.assertEqual(str(data), 'django')
 
-#     def test_category_url(self):
-#         """
-#         Test category model slug and URL reverse
-#         """
-#         data = self.data1
-#         response = self.client.post(
-#             reverse('store:category_list', args=[data.slug]))
-#         self.assertEqual(response.status_code, 200)
+    def test_category_url(self):
+        """
+        Test category model slug and URL reverse
+        """
+        data = self.data1
+        response = self.client.post(
+            reverse('store:category_list', args=[data.slug]))
+        self.assertEqual(response.status_code, 200)
 
 
 class TestProductsModel(TestCase):
@@ -45,20 +45,20 @@ class TestProductsModel(TestCase):
         self.assertTrue(isinstance(data, Product))
         self.assertEqual(str(data), 'django beginners')
 
-#     def test_products_url(self):
-#         """
-#         Test product model slug and URL reverse
-#         """
-#         data = self.data1
-#         url = reverse('store:product_detail', args=[data.slug])
-#         self.assertEqual(url, '/item/django-beginners/')
-#         response = self.client.post(
-#             reverse('store:product_detail', args=[data.slug]))
-#         self.assertEqual(response.status_code, 200)
+    def test_products_url(self):
+        """
+        Test product model slug and URL reverse
+        """
+        data = self.data1
+        url = reverse('store:product_detail', args=[data.slug])
+        self.assertEqual(url, '/django-beginners')
+        response = self.client.post(
+            reverse('store:product_detail', args=[data.slug]))
+        self.assertEqual(response.status_code, 200)
 
-#     def test_products_custom_manager_basic(self):
-#         """
-#         Test product model custom manager returns only active products
-#         """
-#         data = Product.products.all()
-#         self.assertEqual(data.count(), 1)
+    def test_products_custom_manager_basic(self):
+        """
+        Test product model custom manager returns only active products
+        """
+        data = Product.products.all()
+        self.assertEqual(data.count(), 1)
