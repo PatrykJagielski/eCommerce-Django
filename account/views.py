@@ -1,12 +1,12 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse
 
 from .forms import RegistrationForm
 
 
 def account_register(request):
-    if request.user.is_authenticated:
-        return redirect('/')
+    # if request.user.is_authenticated:
+    #     return redirect('/')
 
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
@@ -26,6 +26,7 @@ def account_register(request):
                 'token': account_registrarion_token.make_token(user)
             })
             user.email_user(subject=subject, message=message)
-        else:
-            registerForm = RegistrationForm()
-        return render(request, 'account/registration/register.html', {'form': registerForm})
+            return HttpResponse('registered succesfully and activation sent')
+    else:
+        registerForm = RegistrationForm()
+    return render(request, 'account/registration/register.html', {'form': registerForm})
