@@ -24,6 +24,9 @@ def edit_details(request):
     if request.method == 'POST':
         print("POSTED")
         user_form = UserEditForm(instance=request.user, data=request.POST)
+        print(request.user)
+        print(request.POST)
+        print(user_form.is_valid())
 
         if user_form.is_valid():
             print("SAVED")
