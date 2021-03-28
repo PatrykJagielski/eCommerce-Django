@@ -1,7 +1,7 @@
 //'use strict';
 
 
-var stripe = Stripe('pk_test_51IZc1lIufSawS3O88Axc7bqdeqB4E49V4kdbNuKZGOmNFWaksQ1DqsVYK70k5ct5vm0XRiKn0fB4xeqOSSzHBtN800MUkyES1l');
+var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
 
 var elem = document.getElementById('submit');
 clientsecret = elem.getAttribute('data-secret');
