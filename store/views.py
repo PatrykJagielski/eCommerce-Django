@@ -9,11 +9,13 @@ def product_all(request):
 
 
 def product_detail(request, slug):
-    product = get_object_or_404(Product, slug=slug, in_stock=True)
+    product = get_object_or_404(Product, slug=slug, is_active=True)
     return render(request, "store/single.html", {"product": product})
 
 
 def category_list(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    products = Product.objects.filter(category=category)
+    products = Product.objects.filter(
+        category__in=Category.objects.get(name=category_slug).get_descendants(include_self=True)
+    )
     return render(request, "store/category.html", {"category": category, "products": products})
