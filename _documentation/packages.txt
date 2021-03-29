@@ -4,7 +4,8 @@ Package List
 django
 black
 isort
-mptt
+django-mptt
 pillow
 stripe
 coverage
+six
